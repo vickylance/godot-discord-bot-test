@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/discord_gd/discord.gd" type="Script" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DiscordBot" type="HTTPRequest" parent="."]
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Button" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Play on Server"
+
+[connection signal="bot_ready" from="DiscordBot" to="." method="_on_DiscordBot_bot_ready"]
